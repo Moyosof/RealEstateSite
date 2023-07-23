@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentEmail.Core" Version="3.0.2" />
+    <PackageReference Include="FluentEmail.Razor" Version="3.0.2" />
+    <PackageReference Include="FluentEmail.Smtp" Version="3.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.NetTopologySuite" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate.Application\RealEstate.Application.csproj" />
+    <ProjectReference Include="..\RealEstate.BackgroundServices\RealEstate.BackgroundServices.csproj" />
+    <ProjectReference Include="..\RealEstate.DataAccess\RealEstate.DataAccess.csproj" />
+    <ProjectReference Include="..\RealEstate.Data\RealEstate.Data.csproj" />
+    <ProjectReference Include="..\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj" />
+    <ProjectReference Include="..\RealEstate.Application\RealEstate.Application.csproj" />
+    <ProjectReference Include="..\RealEstate.BackgroundServices\RealEstate.BackgroundServices.csproj" />
+    <ProjectReference Include="..\RealEstate.DataAccess\RealEstate.DataAccess.csproj" />
+    <ProjectReference Include="..\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

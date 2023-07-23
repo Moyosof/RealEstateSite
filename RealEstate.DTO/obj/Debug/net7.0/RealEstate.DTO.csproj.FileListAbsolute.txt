@@ -1,0 +1,12 @@
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\bin\Debug\net7.0\RealEstate.DTO.deps.json
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\bin\Debug\net7.0\RealEstate.DTO.dll
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\bin\Debug\net7.0\RealEstate.DTO.pdb
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\RealEstate.DTO.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\RealEstate.DTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\RealEstate.DTO.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\RealEstate.DTO.AssemblyInfo.cs
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\RealEstate.DTO.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\RealEstate.DTO.dll
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\refint\RealEstate.DTO.dll
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\RealEstate.DTO.pdb
+C:\Users\USER\Desktop\.NETProjects\CQRSOnionPattern\RealEstateBackend\RealEstate.DTO\obj\Debug\net7.0\ref\RealEstate.DTO.dll

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentEmail.Core" Version="3.0.2" />
+    <PackageReference Include="MySqlConnector" Version="2.2.5" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.28.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate.Application\RealEstate.Application.csproj" />
+    <ProjectReference Include="..\RealEstate.DataAccess\RealEstate.DataAccess.csproj" />
+    <ProjectReference Include="..\RealEstate.Domain\RealEstate.Domain.csproj" />
+    <ProjectReference Include="..\RealEstate.Application\RealEstate.Application.csproj" />
+    <ProjectReference Include="..\RealEstate.DataAccess\RealEstate.DataAccess.csproj" />
+    <ProjectReference Include="..\RealEstate.Domain\RealEstate.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
