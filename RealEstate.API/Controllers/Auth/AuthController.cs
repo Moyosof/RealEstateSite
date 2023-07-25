@@ -44,7 +44,7 @@ namespace RealEstate.API.Controllers.Auth
         [HttpPost]
         [Route("create_user")]
         [ProducesResponseType(typeof(JsonMessage<string>), 200)]
-        public async Task<IActionResult> RegisterUser(RegisterUserDTO registerUserDTO, CancellationToken cancellationToken)
+        public async Task<IActionResult> RegisterUser([FromBody]RegisterUserDTO registerUserDTO, CancellationToken cancellationToken)
         {
             #region Register User
             //Subcribe to Otp Email Event Handler

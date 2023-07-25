@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate.API.Filters;
 using RealEstate.Application.Contracts;
 using RealEstate.Application.EmailService;
+using RealEstate.Application.Filters;
 using RealEstate.Application.SmsService;
 
 namespace RealEstate.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
+    [ValidateApiKey]
+    [ModelStateCheck]
     public class BaseController : ControllerBase
     {
         private IBusinessRule _businessRule;

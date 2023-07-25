@@ -7,10 +7,10 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "swagger_credentials": "admin:admin",
-        "Selenia_API_KEY": "80109414-c38e-4bed-b251-190ee1f88190"
+        "RealEstate_API_KEY": "853a7213-9d4f-4c62-ba2e-371b74e9b2bc"
       }
     },
-    "WebA[iSetup.API": {
+    "RealEstate.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

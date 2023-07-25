@@ -140,7 +140,7 @@ namespace RealEstate.API
 
             app.UseSwaggerAuthorized();
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Selenia.API v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RealEstate.API v1"));
 
             app.UseEndpoints(endpoints =>
             {
