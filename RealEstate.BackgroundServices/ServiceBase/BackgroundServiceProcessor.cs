@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace WebApiSetup.BackgroundService.ServiceBase
+namespace RealEstate.BackgroundService.ServiceBase
 {
     public abstract class BackgroundServiceProcessor : Microsoft.Extensions.Hosting.BackgroundService
     {

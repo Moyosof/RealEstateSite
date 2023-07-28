@@ -17,7 +17,7 @@ namespace RealEstate.DTO.WriteOnly.AuthDTO
         [JsonProperty("LastName")]
         [Required]
         public string LastName { get; set;}
-        [JsonProperty("EmailAdress")]
+        [JsonProperty("EmailAddress")]
         [Required]
         [EmailAddress]
         public string EmailAddress { get; set;}

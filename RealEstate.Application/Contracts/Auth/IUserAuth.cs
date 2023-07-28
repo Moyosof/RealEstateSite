@@ -12,6 +12,8 @@ namespace RealEstate.Application.Contracts.Auth
     {
         Task<string> RegisterUser(RegisterUserDTO registerUserDTO);
         Task<string> RegisterAdmin(RegisterUserDTO adminDTO);
+        Task<string> RegisterDeveloper(RegisterUserDTO developerDTO);
+        Task<string> RegisterAgent(RegisterUserDTO agentDTO);
         Task<string> LoginUser(LoginDTO loginDTO);
         Task<List<string>> GetUserRoles(string username);
         Task<ApplicationUser> FindByUserName(string userName);

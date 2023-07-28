@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\USER\\.nuget\\packages\\": {}
+    "C:\\Users\\taiwo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\Desktop\\.NETProjects\\CQRSOnionPattern\\RealEstateBackend\\RealEstate.Domain\\RealEstate.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\taiwo\\Desktop\\RealEstateSite\\RealEstate.Domain\\RealEstate.Domain.csproj",
       "projectName": "RealEstate.Domain",
-      "projectPath": "C:\\Users\\USER\\Desktop\\.NETProjects\\CQRSOnionPattern\\RealEstateBackend\\RealEstate.Domain\\RealEstate.Domain.csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Desktop\\.NETProjects\\CQRSOnionPattern\\RealEstateBackend\\RealEstate.Domain\\obj\\",
+      "projectPath": "C:\\Users\\taiwo\\Desktop\\RealEstateSite\\RealEstate.Domain\\RealEstate.Domain.csproj",
+      "packagesPath": "C:\\Users\\taiwo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\taiwo\\Desktop\\RealEstateSite\\RealEstate.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\taiwo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

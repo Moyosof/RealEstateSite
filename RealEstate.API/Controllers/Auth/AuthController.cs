@@ -17,6 +17,7 @@ namespace RealEstate.API.Controllers.Auth
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthController : BaseController
     {
         private readonly IUserAuth _userAuth;
@@ -106,6 +107,90 @@ namespace RealEstate.API.Controllers.Auth
             });
             #endregion
         }
+
+        /// <summary>
+        /// Enter the credentials to create a developer admin
+        /// </summary>
+        /// <param name="registerUserDTO"></param>
+        /// <returns></returns>
+
+        [HttpPost]
+        [Route("create_developer_user")]
+        [ProducesResponseType(typeof(JsonMessage<string>), 200)]
+
+        public async Task<IActionResult> RegisterDeveloper(RegisterUserDTO registerUserDTO, CancellationToken cancellation)
+        {
+            #region Register Developer
+            _tokenAuth.OneTimePasswordEmailEventhandler += fluentEmail.SendOneTimeCodeEmail;
+
+            var result = await _userAuth.RegisterDeveloper(registerUserDTO);
+            if (string.IsNullOrWhiteSpace(result))
+            {
+                string code = Util.GenerateRandomDigits(6);
+                OneTimeCodeDTO oneTime = new()
+                {
+                    Token= code,
+                    Sender = registerUserDTO.EmailAddress
+                };
+                await _tokenAuth.AddOneTimeCodeToSender(oneTime, cancellation);
+                _tokenAuth.OneTimePasswordEmailEventhandler -= fluentEmail.SendOneTimeCodeEmail;
+
+                return Ok(new JsonMessage<string>()
+                {
+                    status = true,
+                    success_message = "Confirm Email to complete authentication"
+                });
+            }
+            return Ok(new JsonMessage<string>()
+            {
+                error_message = result,
+                status = false,
+                status_code = (int)HttpStatusCode.BadRequest
+            });
+            #endregion
+        }
+
+        /// <summary>
+        /// Enter credentials to regsiter agent user
+        /// </summary>
+        /// <param name="registerUserDTO"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("create_agent_user")]
+        [ProducesResponseType(typeof(JsonMessage<string>), 200)]
+
+       
+        public async Task<IActionResult> RegisterAgent(RegisterUserDTO registerUserDTO, CancellationToken cancellation)
+        {
+            _tokenAuth.OneTimePasswordEmailEventhandler += fluentEmail.SendOneTimeCodeEmail;
+
+            #region Register Agent
+            var result = await _userAuth.RegisterAgent(registerUserDTO);
+            if (string.IsNullOrWhiteSpace(result))
+            {
+                string code = Util.GenerateRandomString(6);
+                OneTimeCodeDTO oneTime = new()
+                {
+                    Token = code,
+                    Sender = registerUserDTO.EmailAddress,
+                };
+                await _tokenAuth.AddOneTimeCodeToSender(oneTime, cancellation);
+                _tokenAuth.OneTimePasswordEmailEventhandler -= fluentEmail.SendOneTimeCodeEmail;
+                return Ok(new JsonMessage<string>()
+                {
+                    status = true,
+                    success_message = "Confirm Email to complete authentication"
+                });
+            }
+            return Ok(new JsonMessage<string>()
+            {
+                error_message = result,
+                status = false,
+                status_code = (int)HttpStatusCode.BadRequest
+            });
+            #endregion
+        }
+
 
         /// <summary>
         /// The is to login any user

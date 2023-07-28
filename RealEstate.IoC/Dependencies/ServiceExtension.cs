@@ -31,7 +31,8 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using WebApiSetup.BackgroundService.ServiceJobs;
+//using WebApiSetup.BackgroundService.ServiceJobs;
+using RealEstate.BackgroundService.ServiceJobs;
 
 
 namespace RealEstate.IoC.Dependencies
