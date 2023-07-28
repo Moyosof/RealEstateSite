@@ -128,6 +128,14 @@ namespace RealEstate.Infrastructure.Contracts.Auth
             return await Register(registerUserDTO, Roles.User);
         }
 
+        public async Task<string> RegisterDeveloper(RegisterUserDTO developerDTO)
+        {
+            return await Register(developerDTO, Roles.Developer);
+        }
+        public async Task<string> RegisterAgent(RegisterUserDTO agentDTO)
+        {
+            return await Register(agentDTO, Roles.Agent);
+        }
         public async Task<string> ResetPassword(ApplicationUser user, string token, string newPassword)
         {
             var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
@@ -158,5 +166,7 @@ namespace RealEstate.Infrastructure.Contracts.Auth
             }
             return result.Errors.First().Description;
         }
+
+       
     }
 }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\.NETProjects\\CQRSOnionPattern\\RealEstateBackend\\RealEstate.DTO\\RealEstate.DTO.csproj": {}
+    "C:\\Users\\taiwo\\Desktop\\RealEstateSite\\RealEstate.DTO\\RealEstate.DTO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Desktop\\.NETProjects\\CQRSOnionPattern\\RealEstateBackend\\RealEstate.DTO\\RealEstate.DTO.csproj": {
+    "C:\\Users\\taiwo\\Desktop\\RealEstateSite\\RealEstate.DTO\\RealEstate.DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\.NETProjects\\CQRSOnionPattern\\RealEstateBackend\\RealEstate.DTO\\RealEstate.DTO.csproj",
+        "projectUniqueName": "C:\\Users\\taiwo\\Desktop\\RealEstateSite\\RealEstate.DTO\\RealEstate.DTO.csproj",
         "projectName": "RealEstate.DTO",
-        "projectPath": "C:\\Users\\USER\\Desktop\\.NETProjects\\CQRSOnionPattern\\RealEstateBackend\\RealEstate.DTO\\RealEstate.DTO.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\.NETProjects\\CQRSOnionPattern\\RealEstateBackend\\RealEstate.DTO\\obj\\",
+        "projectPath": "C:\\Users\\taiwo\\Desktop\\RealEstateSite\\RealEstate.DTO\\RealEstate.DTO.csproj",
+        "packagesPath": "C:\\Users\\taiwo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\taiwo\\Desktop\\RealEstateSite\\RealEstate.DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\taiwo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

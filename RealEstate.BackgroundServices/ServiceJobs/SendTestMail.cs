@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApiSetup.BackgroundService.ServiceBase;
+using RealEstate.BackgroundService.ServiceBase;
 
-namespace WebApiSetup.BackgroundService.ServiceJobs
+namespace RealEstate.BackgroundService.ServiceJobs
 {
     public class SendTestMail : BackgroundServiceProcessor
     {
