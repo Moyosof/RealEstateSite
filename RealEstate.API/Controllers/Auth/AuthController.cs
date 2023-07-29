@@ -304,5 +304,70 @@ namespace RealEstate.API.Controllers.Auth
             });
             #endregion
         }
+
+
+        /// <summary>
+        /// Resend OTP
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("resend_onetimecode")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(JsonMessage<string>), 200)]
+        public async Task<IActionResult> ResendOneTimeCode([FromQuery] string email, CancellationToken cancellationToken)
+        {
+            //Subcribe to Otp Email Event Handler
+            _tokenAuth.OneTimePasswordEmailEventhandler += fluentEmail.SendOneTimeCodeEmail;
+
+            string code = Util.GenerateRandomDigits(6); // generate 6 digit numbers
+            OneTimeCodeDTO oneTimeCodeDTO = new OneTimeCodeDTO()
+            {
+                Token = code,
+                Sender = email
+            };
+            // Save token to the sender
+            await _tokenAuth.AddOneTimeCodeToSender(oneTimeCodeDTO, cancellationToken);
+            //unsubcribe event
+            _tokenAuth.OneTimePasswordEmailEventhandler -= fluentEmail.SendOneTimeCodeEmail;
+
+            return Ok(new JsonMessage<string>()
+            {
+                status = true,
+                success_message = "One Time Code Resent",
+                status_code = (int)HttpStatusCode.OK
+            });
+        }
+
+        /// <summary>
+        /// Verify The One Time Code sent to the User
+        /// </summary>
+        /// <param name="verifyOneTimeCodeDTO"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("verify_Onetimecode")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(JsonMessage<string>), 200)]
+        public async Task<IActionResult> VerifyOneTimeCode([FromBody] VerifyOneTimeCodeDTO verifyOneTimeCodeDTO)
+        {
+            string result = await _tokenAuth.VerifyOneTimeCode(verifyOneTimeCodeDTO);
+            if (string.IsNullOrWhiteSpace(result))
+            {
+
+                return Ok(new JsonMessage<string>()
+                {
+                    status = true,
+                    success_message = "User successfully Created",
+                    status_code = (int)HttpStatusCode.OK
+                });
+            }
+            return Ok(new JsonMessage<string>()
+            {
+                error_message = result,
+                status = false,
+                status_code = (int)HttpStatusCode.NotFound
+            });
+        }
     }
 }

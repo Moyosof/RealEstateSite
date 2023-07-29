@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RealEstate.Domain.Entities.Core.AuthUser;
 
 namespace RealEstate.Data.Context
 {
@@ -15,6 +16,8 @@ namespace RealEstate.Data.Context
         {
             
         }
+
+        public virtual DbSet<OneTimeCode> OneTimeCode { get; set; }
 
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
