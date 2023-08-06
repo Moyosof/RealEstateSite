@@ -97,7 +97,7 @@ namespace RealEstate.API.Controllers.Auth
                 return Ok(new JsonMessage<string>()
                 {
                     status = true,
-                    success_message = "Confirm Email to complete authentication"
+                    success_message = "Account created successfully"
                 });
             }
             return Ok(new JsonMessage<string>()

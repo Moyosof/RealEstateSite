@@ -33,7 +33,9 @@ using System.Text;
 using System.Threading.Tasks;
 //using WebApiSetup.BackgroundService.ServiceJobs;
 using RealEstate.BackgroundService.ServiceJobs;
-
+using RealEstate.Domain.Entities.Core.AuthUser;
+using RealEstate.Application.Contracts.Core;
+using RealEstate.Infrastructure.Contracts.Core;
 
 namespace RealEstate.IoC.Dependencies
 {
@@ -57,12 +59,15 @@ namespace RealEstate.IoC.Dependencies
             services.AddScoped<ISqlDBObjects, SqlDBObjects>();
             services.AddScoped<IUserAuth, UserAuth>();
             services.AddScoped<ITokenAuth, UserAuth>();
+            services.AddScoped<IPropertyUpload, PropertyUploadService>();
 
             services.AddTransient<IMailService, MailService>();
             services.AddTransient<ISmsService, SmsService>();
 
             services.AddTransient<IFluentEmailClient, FluentEmailClientService>();
 
+            services.AddTransient<IFileService, FileService>();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
 
             //inject background services here
             services.AddTransient<IHostedService, SendTestMail>();

@@ -34,3 +34,6 @@ C:\Users\USER\Desktop\RealEstateSite\RealEstate.Domain\obj\Debug\net7.0\RealEsta
 C:\Users\USER\Desktop\RealEstateSite\RealEstate.Domain\obj\Debug\net7.0\refint\RealEstate.Domain.dll
 C:\Users\USER\Desktop\RealEstateSite\RealEstate.Domain\obj\Debug\net7.0\RealEstate.Domain.pdb
 C:\Users\USER\Desktop\RealEstateSite\RealEstate.Domain\obj\Debug\net7.0\ref\RealEstate.Domain.dll
+C:\Users\taiwo\Desktop\RealEstateSite\RealEstate.Domain\bin\Debug\net7.0\RealEstate.DTO.dll
+C:\Users\taiwo\Desktop\RealEstateSite\RealEstate.Domain\bin\Debug\net7.0\RealEstate.DTO.pdb
+C:\Users\taiwo\Desktop\RealEstateSite\RealEstate.Domain\obj\Debug\net7.0\RealEstate.Domain.csproj.CopyComplete
