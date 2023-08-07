@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RealEstate.Application.Contracts.Auth;
 using RealEstate.Application.DataContext;
+using RealEstate.DataAccess.UnitOfWork.Interface;
+using RealEstate.Domain.Entities.Core.AuthUser;
 using RealEstate.Domain.Entities.ReadOnly;
 using RealEstate.Domain.Enum;
 using RealEstate.DTO.WriteOnly.AuthDTO;
@@ -19,25 +22,64 @@ namespace RealEstate.Infrastructure.Contracts.Auth
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUnitOfWork<OneTimeCode> _unitOfWorkOneTimeCode;
+
 
         public UserAuth(
            UserManager<ApplicationUser> userManager,
            IUserStore<ApplicationUser> userStore,
            SignInManager<ApplicationUser> signInManager,
-           RoleManager<IdentityRole> roleManager
+           RoleManager<IdentityRole> roleManager,
+           IUnitOfWork<OneTimeCode> unitOfWorkOneTimeCode
             )
         {
             _userManager = userManager;
             _userStore = userStore;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _unitOfWorkOneTimeCode = unitOfWorkOneTimeCode;
         }
 
         public event Func<object, OneTimeCodeDTO, CancellationToken, Task> OneTimePasswordEmailEventhandler;
 
-        public Task AddOneTimeCodeToSender(OneTimeCodeDTO oneTimeCodeDTO, CancellationToken cancellationToken)
+        public async Task AddOneTimeCodeToSender(OneTimeCodeDTO oneTimeCodeDTO, CancellationToken token)
         {
-            throw new NotImplementedException();
+            OneTimeCode oneTimeCode = new OneTimeCode(oneTimeCodeDTO);
+            try
+            {
+                await _unitOfWorkOneTimeCode.Repository.Add(oneTimeCode);
+                await _unitOfWorkOneTimeCode.SaveAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            await Task.Delay(1000);
+            //Invoke events
+            await OnOtpAuth(oneTimeCodeDTO, token);
+
+        }
+
+        /// <summary>
+        /// Checks for subcribed events and invoke them
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        protected async virtual Task OnOtpAuth(OneTimeCodeDTO oneTimeCodeDTO, CancellationToken cancellationToken)
+        {
+            Func<object, OneTimeCodeDTO, CancellationToken, Task> handler = OneTimePasswordEmailEventhandler;
+            if (handler is not null)
+            {
+                Delegate[] invocationList = handler.GetInvocationList();//Get list of subcription on this event handler
+                Task[] handlerTasks = new Task[invocationList.Length];//total subcription
+                //Invoke each events
+                for (int i = 0; i < invocationList.Length; i++)
+                {
+                    handlerTasks[i] = ((Func<object, OneTimeCodeDTO, CancellationToken, Task>)invocationList[i])(this, oneTimeCodeDTO, cancellationToken);
+                }
+
+                await Task.WhenAll(handlerTasks);
+            }
         }
 
         public async Task<string> ChangePassword(string userEmail, ChangePasswordDTO changePasswordDTO)
@@ -146,9 +188,26 @@ namespace RealEstate.Infrastructure.Contracts.Auth
             return result.Errors.First().Description;
         }
 
-        public Task<string> VerifyOneTimeCode(VerifyOneTimeCodeDTO verifyOneTimeCodeDTO)
+        public async Task<string> VerifyOneTimeCode(VerifyOneTimeCodeDTO verifyOneTimeCodeDTO)
         {
-            throw new NotImplementedException();
+            var tokenDb = await _unitOfWorkOneTimeCode.Repository.ReadAllQuery().Where(x => x.IsUsed == false && x.Token == verifyOneTimeCodeDTO.Token && x.Sender == verifyOneTimeCodeDTO.Sender && x.ExpiringDate > DateTime.UtcNow).FirstOrDefaultAsync();
+            if (tokenDb is not null)
+            {
+                tokenDb.IsUsed = true;
+                await _unitOfWorkOneTimeCode.SaveAsync();
+
+                // get username
+                var user = await FindByUserName(verifyOneTimeCodeDTO.Sender);
+                if (user is not null)
+                {
+                    user.EmailConfirmed = true;
+                    await _userManager.UpdateAsync(user);
+                    return string.Empty;
+                }
+                return "User not found";
+
+            }
+            return "Invalid Token";
         }
 
         private async Task<string> Register(RegisterUserDTO registerUserDTO, Roles role)
@@ -166,6 +225,8 @@ namespace RealEstate.Infrastructure.Contracts.Auth
             }
             return result.Errors.First().Description;
         }
+
+
 
        
     }

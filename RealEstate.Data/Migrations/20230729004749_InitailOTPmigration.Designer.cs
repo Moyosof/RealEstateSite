@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstate.Data.Context;
 
@@ -10,9 +11,11 @@ using RealEstate.Data.Context;
 namespace RealEstate.Data.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    partial class RealEstateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230729004749_InitailOTPmigration")]
+    partial class InitailOTPmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,65 +78,6 @@ namespace RealEstate.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OneTimeCode");
-                });
-
-            modelBuilder.Entity("RealEstate.Domain.Entities.Core.PropertyUpload", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Amount")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Area")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Furnished")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ImageUpload")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("InstallmentalPayment")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Locality")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NewlyBuilt")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NumbersOfBathroom")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NumbersOfRoom")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NumbersOfToilet")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("PropertyType")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Purpose")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Serviced")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("State")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PropertyUploads");
                 });
 
             modelBuilder.Entity("RealEstate.Domain.Entities.ErrorLog", b =>
