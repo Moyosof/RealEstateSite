@@ -13,6 +13,15 @@ namespace RealEstate.Application.DataContext
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string State { get; set; }
+        public string WhatsAppNumber { get; set; }
+        public string Logo { get; set; }
+        public string OfficeState { get; set; }
+        public string OfficeLGA { get; set; }
+        public string OfficeAddress { get; set; }
+        public string OrganizationDescription { get; set; }
+        public string OrganizationServices { get; set; }
+        public string BusinessCategory { get; set; }
+        public string SocialMedia { get; set; }
 
     }
 }
